@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
-import ProductTable from './hw1/components/ProductTable';
+// import HomeWork1 from './hw1/components/HomeWork1';
+// import HomeWork2 from './hw2/components/HomeWork2';
+
+const HomeWork1 = lazy(() => import('./hw1/components/HomeWork1'));
+const HomeWork2 = lazy(() => import('./hw2/components/HomeWork2'));
 
 function App() {
   return (
-    <div id="hw1">
-      <h1>Home Work 1</h1>
-      <h3>The goods presented in the table are taken from here <a href="https://rozetka.com.ua/phones-mp3-gps/c80257/sort=rank/" target="_blank" rel="noopener noreferrer">https://rozetka.com.ua/phones-mp3-gps/c80257/sort=rank/</a></h3>
-      <ProductTable />
-    </div>
+    // <HomeWork1/>
+    <Router>
+      <Menu>
+        <Menu.Item
+          name='Home Work 1'
+          href="/HomeWork/1"
+        />
+        <Menu.Item
+          name='Home Work 2'
+          href="/HomeWork/2"
+        />
+      </Menu>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/HomeWork/1">
+            <HomeWork1 />
+          </Route>
+          <Route path="/HomeWork/2">
+            <HomeWork2 />
+          </Route>
+        </Switch>
+      </Suspense>
+    </Router>
   );
 }
 

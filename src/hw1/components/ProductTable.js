@@ -23,7 +23,7 @@ class ProductTable extends Component {
         const { products, loading } = this.state;
         if (loading) return <div>Loading...</div>
         return (
-            <Table celled striped selectable>
+            <Table celled selectable>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell singleLine>Name</Table.HeaderCell>
