@@ -17,7 +17,14 @@ class ProductTable extends Component {
         this.setState({
             products: products.filter((product, i) => id !== product.id)
         })
-      }
+    }
+
+    updateProduct = (updatedProduct) => {
+        const { products } = this.state;
+        this.setState({
+            users: products.map((product) => updatedProduct.id === product.id ? updatedProduct : product)
+        })
+    }
 
     render() {
         const { products, loading } = this.state;
@@ -37,9 +44,10 @@ class ProductTable extends Component {
                 <Table.Body>
                     {products.map(product =>
                         <ProductRow
-                        data={product}
-                        key={product.id}
-                        onRemoveProduct={this.removeProduct}/>
+                            data={product}
+                            key={product.id}
+                            onRemoveProduct={this.removeProduct}
+                            onUpdateProduct={this.updateProduct} />
                     )}
 
                 </Table.Body>
