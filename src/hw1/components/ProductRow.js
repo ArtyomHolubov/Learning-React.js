@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Header, Table, Button, Icon, Image, Input, Label } from 'semantic-ui-react'
+import { Header, Table, Button, Icon, Image, Input, Label, Confirm } from 'semantic-ui-react'
 
-class User extends Component {
+class ProductRow extends Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +12,10 @@ class User extends Component {
             editedPricePcs: props.data.price_pcs,
             editedImage: props.data.images.preview,
             isEdit: false,
+            onRemoveProduct: this.props.onRemoveProduct
         }
+
+        this.onRemoveProduct = this.props.onRemoveProduct;
     }
 
     onEdit = () => {
@@ -59,6 +62,23 @@ class User extends Component {
 
         this.props.onUpdateProduct(product);
         this.setState({ isEdit: false })
+    }
+
+    remove = () => {
+        this.setState({ openConfirmDelete: true });
+    }
+
+    removeCancel = () => {
+        this.setState({ openConfirmDelete: false });
+    }
+
+    removeConfirm = () => {
+        this.setState({ openConfirmDelete: false });
+        this.setState({ removing: true });
+        setTimeout(() => {
+            this.setState({ removing: false });
+            this.onRemoveProduct(this.props.data.id);
+        }, 1000);
     }
 
     render() {
@@ -112,7 +132,8 @@ class User extends Component {
                     {!isEdit &&
                         <Button animated='fade'
                             color='red'
-                            onClick={() => onRemoveProduct(data.id)}>
+                            loading={this.state.removing}
+                            onClick={this.remove}>
                             <Button.Content hidden>Delete</Button.Content>
                             <Button.Content visible>
                                 <Icon name='delete' />
@@ -142,14 +163,18 @@ class User extends Component {
                     }
                 </Table.Cell>
 
+                <Confirm
+                    open={this.state.openConfirmDelete}
+                    confirmButton={'Delete'}
+                    header={'Do you want to delete?'}
+                    content={data.title}
+                    onCancel={this.removeCancel}
+                    onConfirm={this.removeConfirm}
+                />
+
             </Table.Row>
         );
     }
 }
 
-export default User;
-
-
-export function User2({ name, position }) {
-    return <div>{name} #{position}</div>
-}
+export default ProductRow;
