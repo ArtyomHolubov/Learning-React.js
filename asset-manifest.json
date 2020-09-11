@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/github.io/Learning-React.js/static/css/main.2e420816.chunk.css",
+    "main.js": "/github.io/Learning-React.js/static/js/main.56614611.chunk.js",
+    "main.js.map": "/github.io/Learning-React.js/static/js/main.56614611.chunk.js.map",
+    "runtime-main.js": "/github.io/Learning-React.js/static/js/runtime-main.e3c73a48.js",
+    "runtime-main.js.map": "/github.io/Learning-React.js/static/js/runtime-main.e3c73a48.js.map",
+    "static/css/2.3f2094c3.chunk.css": "/github.io/Learning-React.js/static/css/2.3f2094c3.chunk.css",
+    "static/js/2.33917bc3.chunk.js": "/github.io/Learning-React.js/static/js/2.33917bc3.chunk.js",
+    "static/js/2.33917bc3.chunk.js.map": "/github.io/Learning-React.js/static/js/2.33917bc3.chunk.js.map",
+    "static/js/3.f5ff056d.chunk.js": "/github.io/Learning-React.js/static/js/3.f5ff056d.chunk.js",
+    "static/js/3.f5ff056d.chunk.js.map": "/github.io/Learning-React.js/static/js/3.f5ff056d.chunk.js.map",
+    "static/js/4.2f4e2e3f.chunk.js": "/github.io/Learning-React.js/static/js/4.2f4e2e3f.chunk.js",
+    "static/js/4.2f4e2e3f.chunk.js.map": "/github.io/Learning-React.js/static/js/4.2f4e2e3f.chunk.js.map",
+    "static/js/5.b080644b.chunk.js": "/github.io/Learning-React.js/static/js/5.b080644b.chunk.js",
+    "static/js/5.b080644b.chunk.js.map": "/github.io/Learning-React.js/static/js/5.b080644b.chunk.js.map",
+    "index.html": "/github.io/Learning-React.js/index.html",
+    "precache-manifest.745fe3bbcfc85bda20d7ffce13c18e57.js": "/github.io/Learning-React.js/precache-manifest.745fe3bbcfc85bda20d7ffce13c18e57.js",
+    "service-worker.js": "/github.io/Learning-React.js/service-worker.js",
+    "static/css/2.3f2094c3.chunk.css.map": "/github.io/Learning-React.js/static/css/2.3f2094c3.chunk.css.map",
+    "static/css/main.2e420816.chunk.css.map": "/github.io/Learning-React.js/static/css/main.2e420816.chunk.css.map",
+    "static/js/2.33917bc3.chunk.js.LICENSE.txt": "/github.io/Learning-React.js/static/js/2.33917bc3.chunk.js.LICENSE.txt",
+    "static/js/3.f5ff056d.chunk.js.LICENSE.txt": "/github.io/Learning-React.js/static/js/3.f5ff056d.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/github.io/Learning-React.js/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e3c73a48.js",
+    "static/css/2.3f2094c3.chunk.css",
+    "static/js/2.33917bc3.chunk.js",
+    "static/css/main.2e420816.chunk.css",
+    "static/js/main.56614611.chunk.js"
+  ]
+}
