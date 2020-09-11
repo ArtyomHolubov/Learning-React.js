@@ -1,2 +1,0 @@
-(this.webpackJsonphw1=this.webpackJsonphw1||[]).push([[5],{291:function(e,t,n){"use strict";n.r(t);var a=n(0),r=n.n(a);t.default=function(){return r.a.createElement("div",{id:"hw2"},r.a.createElement("h1",null,"Home Work 2"))}}}]);
-//# sourceMappingURL=5.b080644b.chunk.js.map
