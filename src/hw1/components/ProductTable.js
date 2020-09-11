@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react'
+import { Table, Button } from 'semantic-ui-react'
 import products from './../../data/products.json';
 import ProductRow from './ProductRow';
+import AddProductForm from './AddProductForm';
 
 class ProductTable extends Component {
     state = {
@@ -26,32 +27,49 @@ class ProductTable extends Component {
         })
     }
 
+    addNewProduct = () => {
+        this.setState((prevState) => ({ isAddingNewProduct: !prevState.isAddingNewProduct }))
+    }
+
+    addProduct = (newProduct) => {
+        const { products } = this.state;
+        this.setState({
+            products: [newProduct, ...products]
+        })
+    }
+
     render() {
         const { products, loading } = this.state;
         if (loading) return <div>Loading...</div>
         return (
-            <Table celled selectable>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell singleLine>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Price UAH</Table.HeaderCell>
-                        <Table.HeaderCell>Price USD</Table.HeaderCell>
-                        <Table.HeaderCell>Image</Table.HeaderCell>
-                        <Table.HeaderCell>Actions</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+            <div>
+                <Button onClick={this.addNewProduct}>Add product</Button>
+                <Table celled selectable collapsing>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell>Name</Table.HeaderCell>
+                            <Table.HeaderCell>Price UAH</Table.HeaderCell>
+                            <Table.HeaderCell>Price USD</Table.HeaderCell>
+                            <Table.HeaderCell>Image</Table.HeaderCell>
+                            <Table.HeaderCell>Actions</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
 
-                <Table.Body>
-                    {products.map(product =>
-                        <ProductRow
-                            data={product}
-                            key={product.id}
-                            onRemoveProduct={this.removeProduct}
-                            onUpdateProduct={this.updateProduct} />
-                    )}
+                    <Table.Body>
+                        {this.state.isAddingNewProduct &&
+                            <AddProductForm cancel={this.addNewProduct}
+                                            addProduct={this.addProduct}></AddProductForm>}
+                        {products.map(product =>
+                            <ProductRow
+                                data={product}
+                                key={product.id}
+                                onRemoveProduct={this.removeProduct}
+                                onUpdateProduct={this.updateProduct} />
+                        )}
 
-                </Table.Body>
-            </Table>
+                    </Table.Body>
+                </Table>
+            </div>
         );
     }
 }

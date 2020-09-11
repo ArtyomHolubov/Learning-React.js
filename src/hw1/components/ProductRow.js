@@ -60,8 +60,13 @@ class ProductRow extends Component {
 
         const product = this.props.data;
 
-        this.props.onUpdateProduct(product);
-        this.setState({ isEdit: false })
+        this.setState({ updaiting: true });
+
+        setTimeout(() => {
+            this.props.onUpdateProduct(product);
+            this.setState({ isEdit: false });
+            this.setState({ updaiting: false });
+        }, 1000);
     }
 
     remove = () => {
@@ -85,7 +90,7 @@ class ProductRow extends Component {
         const { isEdit, editedTitle, editedPrice, editedPricePcs, editedImage } = this.state;
         const { data, onRemoveProduct } = this.props;
         return (
-            <Table.Row>
+            <Table.Row disabled={this.state.removing || this.state.updaiting}>
                 <Table.Cell>
                     {
                         isEdit
@@ -95,22 +100,22 @@ class ProductRow extends Component {
                             </Header>
                     }
                 </Table.Cell>
-                <Table.Cell singleLine>
+                <Table.Cell>
                     {
                         isEdit
                             ? <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH'>
                                 <Label basic>₴</Label>
-                                <input />
+                                <input className="price-input" />
                             </Input>
                             : data.price
                     }
                 </Table.Cell>
-                <Table.Cell singleLine>
+                <Table.Cell>
                     {
                         isEdit
                             ? <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD'>
                                 <Label basic>$</Label>
-                                <input />
+                                <input className="price-input" />
                             </Input>
                             : data.price_pcs
                     }
@@ -122,6 +127,7 @@ class ProductRow extends Component {
                     {!isEdit &&
                         <Button animated='fade'
                             primary
+                            loading={this.state.updaiting}
                             onClick={this.onEdit}>
                             <Button.Content hidden>Edit</Button.Content>
                             <Button.Content visible>
@@ -144,6 +150,7 @@ class ProductRow extends Component {
                     {isEdit &&
                         <Button animated='fade'
                             primary
+                            loading={this.state.updaiting}
                             onClick={this.updateProduct}>
                             <Button.Content hidden>Save</Button.Content>
                             <Button.Content visible>
