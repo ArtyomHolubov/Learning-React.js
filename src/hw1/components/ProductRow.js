@@ -87,8 +87,8 @@ class ProductRow extends Component {
     }
 
     render() {
-        const { isEdit, editedTitle, editedPrice, editedPricePcs, editedImage } = this.state;
-        const { data, onRemoveProduct } = this.props;
+        const { isEdit, editedTitle, editedPrice, editedPricePcs } = this.state;
+        const { data } = this.props;
         return (
             <Table.Row disabled={this.state.removing || this.state.updaiting}>
                 <Table.Cell>
