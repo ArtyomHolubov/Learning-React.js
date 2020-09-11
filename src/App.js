@@ -11,11 +11,11 @@ const HomeWork2 = lazy(() => import('./hw2/components/HomeWork2'));
 const routes = {
   homeWork1: {
     name: 'Home Work 1',
-    path: '/HomeWork/1'
+    path: '/home-work/1'
   },
   homeWork2: {
     name: 'Home Work 2',
-    path: '/HomeWork/2'
+    path: '/home-work/2'
   }
 }
 
