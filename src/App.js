@@ -9,13 +9,17 @@ import './App.css';
 const HomeWork1 = lazy(() => import('./hw1/components/HomeWork1'));
 const HomeWork2 = lazy(() => import('./hw2/components/HomeWork2'));
 const routes = {
+  home: {
+    name: 'home',
+    path: '/learning-react'
+  },
   homeWork1: {
     name: 'Home Work 1',
-    path: '/home-work/1'
+    path: '/learning-react/home-work/1'
   },
   homeWork2: {
     name: 'Home Work 2',
-    path: '/home-work/2'
+    path: '/learning-react/home-work/2'
   }
 }
 
@@ -36,7 +40,7 @@ function App() {
       </Menu>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={routes.home.path}>
             <Redirect to={routes.homeWork1.path} />
           </Route>
           <Route path={routes.homeWork1.path}>
