@@ -1,33 +1,33 @@
 {
   "files": {
-    "main.css": "/learning-react/static/css/main.2e420816.chunk.css",
-    "main.js": "/learning-react/static/js/main.8979c58b.chunk.js",
-    "main.js.map": "/learning-react/static/js/main.8979c58b.chunk.js.map",
-    "runtime-main.js": "/learning-react/static/js/runtime-main.de252e1f.js",
-    "runtime-main.js.map": "/learning-react/static/js/runtime-main.de252e1f.js.map",
+    "main.css": "/learning-react/static/css/main.0ac1136f.chunk.css",
+    "main.js": "/learning-react/static/js/main.0f18020c.chunk.js",
+    "main.js.map": "/learning-react/static/js/main.0f18020c.chunk.js.map",
+    "runtime-main.js": "/learning-react/static/js/runtime-main.3ab3cedd.js",
+    "runtime-main.js.map": "/learning-react/static/js/runtime-main.3ab3cedd.js.map",
     "static/css/2.32ec5cf0.chunk.css": "/learning-react/static/css/2.32ec5cf0.chunk.css",
     "static/js/2.025bee1b.chunk.js": "/learning-react/static/js/2.025bee1b.chunk.js",
     "static/js/2.025bee1b.chunk.js.map": "/learning-react/static/js/2.025bee1b.chunk.js.map",
     "static/js/3.da15c47d.chunk.js": "/learning-react/static/js/3.da15c47d.chunk.js",
     "static/js/3.da15c47d.chunk.js.map": "/learning-react/static/js/3.da15c47d.chunk.js.map",
-    "static/js/4.b330b606.chunk.js": "/learning-react/static/js/4.b330b606.chunk.js",
-    "static/js/4.b330b606.chunk.js.map": "/learning-react/static/js/4.b330b606.chunk.js.map",
+    "static/js/4.7946ba05.chunk.js": "/learning-react/static/js/4.7946ba05.chunk.js",
+    "static/js/4.7946ba05.chunk.js.map": "/learning-react/static/js/4.7946ba05.chunk.js.map",
     "static/js/5.2110e80e.chunk.js": "/learning-react/static/js/5.2110e80e.chunk.js",
     "static/js/5.2110e80e.chunk.js.map": "/learning-react/static/js/5.2110e80e.chunk.js.map",
     "index.html": "/learning-react/index.html",
-    "precache-manifest.e725c87dae10602a4884637d0220a284.js": "/learning-react/precache-manifest.e725c87dae10602a4884637d0220a284.js",
+    "precache-manifest.021f8b21ed98c276f85c4c6cc4eb9bc5.js": "/learning-react/precache-manifest.021f8b21ed98c276f85c4c6cc4eb9bc5.js",
     "service-worker.js": "/learning-react/service-worker.js",
     "static/css/2.32ec5cf0.chunk.css.map": "/learning-react/static/css/2.32ec5cf0.chunk.css.map",
-    "static/css/main.2e420816.chunk.css.map": "/learning-react/static/css/main.2e420816.chunk.css.map",
+    "static/css/main.0ac1136f.chunk.css.map": "/learning-react/static/css/main.0ac1136f.chunk.css.map",
     "static/js/2.025bee1b.chunk.js.LICENSE.txt": "/learning-react/static/js/2.025bee1b.chunk.js.LICENSE.txt",
     "static/js/3.da15c47d.chunk.js.LICENSE.txt": "/learning-react/static/js/3.da15c47d.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/learning-react/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.de252e1f.js",
+    "static/js/runtime-main.3ab3cedd.js",
     "static/css/2.32ec5cf0.chunk.css",
     "static/js/2.025bee1b.chunk.js",
-    "static/css/main.2e420816.chunk.css",
-    "static/js/main.8979c58b.chunk.js"
+    "static/css/main.0ac1136f.chunk.css",
+    "static/js/main.0f18020c.chunk.js"
   ]
 }

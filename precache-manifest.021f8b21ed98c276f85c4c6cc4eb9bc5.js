@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "94fc6a6f000074f21e483e3f9d5b42dc",
+    "revision": "f138e2ce550501386d7434be19a0dc73",
     "url": "/learning-react/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learning-react/static/css/2.32ec5cf0.chunk.css"
   },
   {
-    "revision": "d20b5281bac568451170",
-    "url": "/learning-react/static/css/main.2e420816.chunk.css"
+    "revision": "91d42bf177227a475348",
+    "url": "/learning-react/static/css/main.0ac1136f.chunk.css"
   },
   {
     "revision": "8c61a2dc9279db9adc27",
@@ -28,20 +28,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/learning-react/static/js/3.da15c47d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5616f8db49bfb9ad062b",
-    "url": "/learning-react/static/js/4.b330b606.chunk.js"
+    "revision": "d690d564c3fd81045feb",
+    "url": "/learning-react/static/js/4.7946ba05.chunk.js"
   },
   {
     "revision": "fdaef203048e692c430c",
     "url": "/learning-react/static/js/5.2110e80e.chunk.js"
   },
   {
-    "revision": "d20b5281bac568451170",
-    "url": "/learning-react/static/js/main.8979c58b.chunk.js"
+    "revision": "91d42bf177227a475348",
+    "url": "/learning-react/static/js/main.0f18020c.chunk.js"
   },
   {
-    "revision": "4530b77bec45dbe8ab8f",
-    "url": "/learning-react/static/js/runtime-main.de252e1f.js"
+    "revision": "d7601fd0563f18576f76",
+    "url": "/learning-react/static/js/runtime-main.3ab3cedd.js"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
