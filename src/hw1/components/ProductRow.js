@@ -100,7 +100,7 @@ class ProductRow extends Component {
                             </Header>
                     }
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="price-column" textAlign='right'>
                     {
                         isEdit
                             ? <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH'>
@@ -110,7 +110,7 @@ class ProductRow extends Component {
                             : data.price
                     }
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="price-column" textAlign='right'>
                     {
                         isEdit
                             ? <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD'>

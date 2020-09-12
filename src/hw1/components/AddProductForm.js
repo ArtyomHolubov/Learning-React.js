@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import { Table, Button, Icon, Input, Label } from 'semantic-ui-react'
 
 function randomInteger(min, max) {
@@ -7,6 +7,8 @@ function randomInteger(min, max) {
 }
 
 class AddProductForm extends Component {
+    inputNameRef = createRef()
+
     constructor(props) {
         super(props);
         this.state = {
@@ -17,6 +19,10 @@ class AddProductForm extends Component {
         }
 
         this.cancel = this.props.cancel;
+    }
+
+    componentDidMount() {
+        this.inputNameRef.current.focus();
     }
 
     onCancel = () => {
@@ -73,16 +79,19 @@ class AddProductForm extends Component {
             <Table.Row disabled={this.state.removing || this.state.updaiting}>
                 <Table.Cell>
                     <div className="new-product-name">
-                        <Input placeholder="new product name" onChange={this.onChangeName} value={editedTitle} type="text" />
+                        <Input ref={this.inputNameRef}
+                            placeholder="new product name"
+                            onChange={this.onChangeName}
+                            value={editedTitle} type="text" />
                     </div>
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="price-column">
                     <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH'>
                         <Label basic>₴</Label>
                         <input className="price-input" />
                     </Input>
                 </Table.Cell>
-                <Table.Cell>
+                <Table.Cell className="price-column">
                     <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD'>
                         <Label basic>$</Label>
                         <input className="price-input" />

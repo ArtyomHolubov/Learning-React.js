@@ -7,7 +7,8 @@ import AddProductForm from './AddProductForm';
 class ProductTable extends Component {
     state = {
         products: [],
-        loading: false
+        loading: false,
+        isAddingNewProduct: false
     }
     componentDidMount() {
         this.setState({ products: products.data });
@@ -32,10 +33,11 @@ class ProductTable extends Component {
     }
 
     addProduct = (newProduct) => {
-        const { products } = this.state;
+        const { products, isAddingNewProduct } = this.state;
         this.setState({
-            products: [newProduct, ...products]
-        })
+            products: [newProduct, ...products],
+            isAddingNewProduct: !isAddingNewProduct
+        });
     }
 
     render() {
@@ -48,8 +50,8 @@ class ProductTable extends Component {
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Name</Table.HeaderCell>
-                            <Table.HeaderCell>Price UAH</Table.HeaderCell>
-                            <Table.HeaderCell>Price USD</Table.HeaderCell>
+                            <Table.HeaderCell textAlign='right'>Price UAH</Table.HeaderCell>
+                            <Table.HeaderCell textAlign='right'>Price USD</Table.HeaderCell>
                             <Table.HeaderCell>Image</Table.HeaderCell>
                             <Table.HeaderCell>Actions</Table.HeaderCell>
                         </Table.Row>

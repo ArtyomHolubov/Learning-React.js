@@ -25,3 +25,12 @@ code {
   border-bottom-right-radius: .28571429rem !important;
   border-right-color: rgba(34,36,38,.15) !important;
 }
+
+#hw1 .price-column {
+  min-width: 240px;
+  text-align: end;
+}
+
+#hw1 .price-column input {
+  text-align: end;
+}
