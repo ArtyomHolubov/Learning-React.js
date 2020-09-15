@@ -6,70 +6,15 @@ class ProductRow extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: props.data,
-            editedTitle: props.data.title,
-            editedPrice: props.data.price,
-            editedPricePcs: props.data.price_pcs,
-            editedImage: props.data.images.preview,
-            isEdit: false,
-            onRemoveProduct: this.props.onRemoveProduct
+            product: props.data
         }
-
-        this.onRemoveProduct = this.props.onRemoveProduct;
     }
 
-    onEdit = () => {
-        this.setState({ isEdit: true })
+    startEdit = () => {
+        this.props.edit(this.state.product);
     }
 
-    onCancel = () => {
-        this.setState({
-            isEdit: false,
-            editedName: this.props.data.title,
-            editedPrice: this.props.data.price,
-            editedPricePcs: this.props.data.price_pcs,
-            editedImage: this.props.data.images.preview
-        })
-    }
-
-    onChangeName = (e) => {
-        this.setState({
-            editedTitle: e.target.value
-        })
-    }
-
-    onChangePrice = (e) => {
-        this.setState({
-            editedPrice: e.target.value,
-            editedPricePcs: (e.target.value / 28).toFixed(2)
-        })
-    }
-
-    onChangePricePcs = (e) => {
-        this.setState({
-            editedPricePcs: e.target.value,
-            editedPrice: (e.target.value * 28).toFixed(0),
-        })
-    }
-
-    updateProduct = () => {
-        this.props.data.title = this.state.editedTitle;
-        this.props.data.price = this.state.editedPrice;
-        this.props.data.price_pcs = this.state.editedPricePcs;
-        this.props.data.images.preview = this.state.editedImage;
-
-        const product = this.props.data;
-
-        this.setState({ updaiting: true });
-
-        setTimeout(() => {
-            this.props.onUpdateProduct(product);
-            this.setState({ isEdit: false });
-            this.setState({ updaiting: false });
-        }, 1000);
-    }
-
-    remove = () => {
+    startRemove = () => {
         this.setState({ openConfirmDelete: true });
     }
 
@@ -82,104 +27,59 @@ class ProductRow extends Component {
         this.setState({ removing: true });
         setTimeout(() => {
             this.setState({ removing: false });
-            this.onRemoveProduct(this.props.data.id);
+            this.props.remove(this.state.product.id);
         }, 1000);
     }
 
     render() {
-        const { isEdit, editedTitle, editedPrice, editedPricePcs } = this.state;
-        const { data } = this.props;
+        const { product } = this.state;
         return (
-            <Table.Row disabled={this.state.removing || this.state.updaiting}>
-                <Table.Cell>
-                    {
-                        isEdit
-                            ? <Input fluid placeholder="name" onChange={this.onChangeName} value={editedTitle} type="text" />
-                            : <Header as='h4' textAlign='left'>
-                                {data.title}
-                            </Header>
-                    }
-                </Table.Cell>
-                <Table.Cell className="price-column" textAlign='right'>
-                    {
-                        isEdit
-                            ? <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH'>
-                                <Label basic>₴</Label>
-                                <input className="price-input" />
-                            </Input>
-                            : data.price
-                    }
-                </Table.Cell>
-                <Table.Cell className="price-column" textAlign='right'>
-                    {
-                        isEdit
-                            ? <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD'>
-                                <Label basic>$</Label>
-                                <input className="price-input" />
-                            </Input>
-                            : data.price_pcs
-                    }
-                </Table.Cell>
-                <Table.Cell textAlign='right'>
-                    <Image src={data.images.preview} size='mini' verticalAlign='top' />
-                </Table.Cell>
-                <Table.Cell collapsing>
-                    {!isEdit &&
+            <>
+                <Table.Row disabled={this.state.removing || this.state.updaiting}>
+                    <Table.Cell>
+                        <Header as='h4' textAlign='left'>
+                            {product.title}
+                        </Header>
+                    </Table.Cell>
+                    <Table.Cell className="price-column" textAlign='right'>
+                        {product.price}
+                    </Table.Cell>
+                    <Table.Cell className="price-column" textAlign='right'>
+                        {product.price_pcs}
+                    </Table.Cell>
+                    <Table.Cell textAlign='right'>
+                        <Image src={product.images.preview} size='mini' verticalAlign='top' />
+                    </Table.Cell>
+                    <Table.Cell collapsing>
                         <Button animated='fade'
                             primary
                             loading={this.state.updaiting}
-                            onClick={this.onEdit}>
+                            onClick={this.startEdit}>
                             <Button.Content hidden>Edit</Button.Content>
                             <Button.Content visible>
                                 <Icon name='edit' />
                             </Button.Content>
                         </Button>
-                    }
-                    {!isEdit &&
                         <Button animated='fade'
                             color='red'
                             loading={this.state.removing}
-                            onClick={this.remove}>
+                            onClick={this.startRemove}>
                             <Button.Content hidden>Delete</Button.Content>
                             <Button.Content visible>
                                 <Icon name='delete' />
                             </Button.Content>
                         </Button>
-                    }
-
-                    {isEdit &&
-                        <Button animated='fade'
-                            primary
-                            loading={this.state.updaiting}
-                            onClick={this.updateProduct}>
-                            <Button.Content hidden>Save</Button.Content>
-                            <Button.Content visible>
-                                <Icon name='check' />
-                            </Button.Content>
-                        </Button>
-                    }
-                    {isEdit &&
-                        <Button animated='fade'
-                            color='red'
-                            onClick={this.onCancel}>
-                            <Button.Content hidden>Cancel</Button.Content>
-                            <Button.Content visible>
-                                <Icon name='stop circle outline' />
-                            </Button.Content>
-                        </Button>
-                    }
-                </Table.Cell>
-
+                    </Table.Cell>
+                </Table.Row>
                 <Confirm
                     open={this.state.openConfirmDelete}
                     confirmButton={'Delete'}
                     header={'Do you want to delete?'}
-                    content={data.title}
+                    content={product.title}
                     onCancel={this.removeCancel}
                     onConfirm={this.removeConfirm}
                 />
-
-            </Table.Row>
+            </>
         );
     }
 }

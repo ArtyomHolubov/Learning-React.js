@@ -1,32 +1,27 @@
 import React, { Component, createRef } from 'react';
-import { Table, Button, Icon, Input, Label } from 'semantic-ui-react'
+import { Table, Button, Icon, Input, Label, Confirm } from 'semantic-ui-react'
 
 function randomInteger(min, max) {
     let rand = min + Math.random() * (max - min);
     return Math.round(rand);
 }
 
-class AddProductForm extends Component {
+class EditProductForm extends Component {
     inputNameRef = createRef()
 
     constructor(props) {
         super(props);
         this.state = {
-            editedTitle: '',
-            editedPrice: 0,
-            editedPricePcs: 0,
-            editedImage: ''
+            editedTitle: this.props.product ? this.props.product.title : '',
+            editedPrice: this.props.product ? this.props.product.price : 0,
+            editedPricePcs: this.props.product ? this.props.product.price_pcs : 0,
+            editedImage: this.props.product ? this.props.product.images.preview : '',
+            isEdit: this.props.product ? true : false
         }
-
-        this.cancel = this.props.cancel;
     }
 
     componentDidMount() {
         this.inputNameRef.current.focus();
-    }
-
-    onCancel = () => {
-        this.cancel();
     }
 
     onChangeName = (e) => {
@@ -49,34 +44,34 @@ class AddProductForm extends Component {
         })
     }
 
-    addProduct = () => {
-        let newProduct = {
+    updateProduct = () => {
+        const { editedTitle, editedPrice, editedPricePcs, editedImage, isEdit } = this.state;
+        const product = this.props.product ? this.props.product : {
             id: randomInteger(10000, 1000000),
-            title: this.state.editedTitle,
-            price: this.state.editedPrice,
-            price_pcs: this.state.editedPricePcs,
             images: {
                 preview: this.state.editedImage
-            }
-        }
+            },
+        };
+        product.title = editedTitle;
+        product.price = editedPrice;
+        product.price_pcs = editedPricePcs;
+        product.images.preview = editedImage;
+        product.isEdit = false;
 
         this.setState({ adding: true });
         setTimeout(() => {
-            this.setState({
-                adding: false,
-                editedTitle: '',
-                editedPrice: 0,
-                editedPricePcs: 0,
-                editedImage: ''
-            });
-            this.props.addProduct(newProduct);
+            this.props.confirm(product);
         }, 1000);
     }
 
+    onCancel = () => {
+        this.props.cancel(this.props.product);
+    }
+
     render() {
-        const { editedTitle, editedPrice, editedPricePcs } = this.state;
+        const { editedTitle, editedPrice, editedPricePcs, isEdit } = this.state;
         return (
-            <Table.Row disabled={this.state.removing || this.state.updaiting}>
+            <Table.Row disabled={this.state.adding}>
                 <Table.Cell>
                     <div className="new-product-name">
                         <Input ref={this.inputNameRef}
@@ -103,8 +98,8 @@ class AddProductForm extends Component {
                     <Button animated='fade'
                         primary
                         loading={this.state.adding}
-                        onClick={this.addProduct}>
-                        <Button.Content hidden>Add</Button.Content>
+                        onClick={this.updateProduct}>
+                        <Button.Content hidden>{isEdit ? <span>Save</span> : <span>Add</span>}</Button.Content>
                         <Button.Content visible>
                             <Icon name='check' />
                         </Button.Content>
@@ -123,4 +118,4 @@ class AddProductForm extends Component {
     }
 }
 
-export default AddProductForm;
+export default EditProductForm;
