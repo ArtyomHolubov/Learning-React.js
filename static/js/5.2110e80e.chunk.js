@@ -1,2 +1,0 @@
-(this["webpackJsonplearning-react"]=this["webpackJsonplearning-react"]||[]).push([[5],{291:function(e,n,t){"use strict";t.r(n);var a=t(0),r=t.n(a);n.default=function(){return r.a.createElement("div",{id:"hw2"},r.a.createElement("h1",null,"Home Work 2"))}}}]);
-//# sourceMappingURL=5.2110e80e.chunk.js.map
