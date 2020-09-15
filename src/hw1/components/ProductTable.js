@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Table, Button, Dimmer, Loader } from 'semantic-ui-react'
-import products from './../../data/products.json';
 import ProductRow from './ProductRow';
 import EditProductForm from './EditProductForm';
+import products from './../../data/products.json';
+import delay from '../sevices/DelayService';
 
 class ProductTable extends Component {
     state = {
@@ -11,19 +12,19 @@ class ProductTable extends Component {
         isAddingNewProduct: false
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ loading: true });
-        setTimeout(() => {
-            this.setState({ loading: false });
-            this.setState({ products: products.data });
-        }, 1000);
+        await delay();
+        this.setState({ loading: false });
+        this.setState({ products: products.data });
     }
 
-    updateProduct = (updatedProduct) => {
+    updateProduct = async (updatedProduct, force) => {
         const { products } = this.state;
+        if (force) await delay();
         this.setState({
             products: products.map((product) => updatedProduct.id === product.id ? updatedProduct : product)
-        })
+        });
     }
 
     startAddProduct = () => {
@@ -48,15 +49,16 @@ class ProductTable extends Component {
         this.updateProduct(product);
     }
 
-    removeProduct = (id) => {
+    removeProduct = async (id) => {
         const { products } = this.state;
+        await delay();
         this.setState({
             products: products.filter((product, i) => id !== product.id)
         })
     }
 
     render() {
-        const { products, loading, isAddingNewProduct, remove } = this.state;
+        const { products, loading, isAddingNewProduct } = this.state;
 
         return (
             <>

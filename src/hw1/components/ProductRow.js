@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Table, Button, Icon, Image, Input, Label, Confirm } from 'semantic-ui-react'
+import { Header, Table, Button, Icon, Image, Confirm } from 'semantic-ui-react'
 
 class ProductRow extends Component {
 
@@ -25,10 +25,7 @@ class ProductRow extends Component {
     removeConfirm = () => {
         this.setState({ openConfirmDelete: false });
         this.setState({ removing: true });
-        setTimeout(() => {
-            this.setState({ removing: false });
-            this.props.remove(this.state.product.id);
-        }, 1000);
+        this.props.remove(this.state.product.id);
     }
 
     render() {

@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react';
-import { Table, Button, Icon, Input, Label, Confirm } from 'semantic-ui-react'
+import { Table, Button, Icon, Input, Label } from 'semantic-ui-react'
 
 function randomInteger(min, max) {
     let rand = min + Math.random() * (max - min);
@@ -45,7 +45,7 @@ class EditProductForm extends Component {
     }
 
     updateProduct = () => {
-        const { editedTitle, editedPrice, editedPricePcs, editedImage, isEdit } = this.state;
+        const { editedTitle, editedPrice, editedPricePcs, editedImage } = this.state;
         const product = this.props.product ? this.props.product : {
             id: randomInteger(10000, 1000000),
             images: {
@@ -59,9 +59,7 @@ class EditProductForm extends Component {
         product.isEdit = false;
 
         this.setState({ adding: true });
-        setTimeout(() => {
-            this.props.confirm(product);
-        }, 1000);
+        this.props.confirm(product, true);
     }
 
     onCancel = () => {
