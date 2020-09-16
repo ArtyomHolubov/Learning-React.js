@@ -44,6 +44,13 @@ class EditProductForm extends Component {
         })
     }
 
+    valideteAllField = () => {
+        const { editedTitle, editedPrice, editedPricePcs } = this.state;
+        return editedTitle.length &&
+            editedPrice > 0 &&
+            editedPricePcs > 0;
+    }
+
     updateProduct = () => {
         const { editedTitle, editedPrice, editedPricePcs, editedImage } = this.state;
         const product = this.props.product ? this.props.product : {
@@ -73,21 +80,22 @@ class EditProductForm extends Component {
                 <Table.Cell>
                     <div className="new-product-name">
                         <Input ref={this.inputNameRef}
+                            error={!editedTitle.length}
                             placeholder="new product name"
                             onChange={this.onChangeName}
                             value={editedTitle} type="text" />
                     </div>
                 </Table.Cell>
                 <Table.Cell className="price-column">
-                    <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH'>
+                    <Input onChange={this.onChangePrice} value={editedPrice} labelPosition='right' type='text' placeholder='Price UAH' error={editedPrice <= 0}>
                         <Label basic>₴</Label>
-                        <input className="price-input" />
+                        <input type="number" className="price-input" />
                     </Input>
                 </Table.Cell>
                 <Table.Cell className="price-column">
-                    <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD'>
+                    <Input onChange={this.onChangePricePcs} value={editedPricePcs} labelPosition='right' type='text' placeholder='Price USD' error={editedPricePcs <= 0}>
                         <Label basic>$</Label>
-                        <input className="price-input" />
+                        <input type="number" className="price-input" />
                     </Input>
                 </Table.Cell>
                 <Table.Cell>
@@ -95,6 +103,7 @@ class EditProductForm extends Component {
                 <Table.Cell collapsing>
                     <Button animated='fade'
                         primary
+                        disabled={!this.valideteAllField()}
                         loading={this.state.adding}
                         onClick={this.updateProduct}>
                         <Button.Content hidden>{isEdit ? <span>Save</span> : <span>Add</span>}</Button.Content>

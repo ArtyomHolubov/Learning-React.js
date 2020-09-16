@@ -31,8 +31,9 @@ class ProductTable extends Component {
         this.setState((prevState) => ({ isAddingNewProduct: !prevState.isAddingNewProduct }))
     }
 
-    addProduct = (newProduct) => {
+    addProduct = async (newProduct) => {
         const { products, isAddingNewProduct } = this.state;
+        await delay();
         this.setState({
             products: [newProduct, ...products],
             isAddingNewProduct: !isAddingNewProduct
