@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import {
     Button,
-    Header,
-    Segment,
     TransitionablePortal,
 } from 'semantic-ui-react'
 

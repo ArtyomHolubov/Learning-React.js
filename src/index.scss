@@ -26,13 +26,15 @@ code {
   border-right-color: rgba(34,36,38,.15) !important;
 }
 
-#hw1 .price-column {
-  min-width: 240px;
-  text-align: end;
-}
+#hw1 {
+  .price-column {
+    min-width: 240px;
+    text-align: end;
 
-#hw1 .price-column input {
-  text-align: end;
+    input {
+      text-align: end;
+    }
+  }
 }
 
 .hw-description {
@@ -51,9 +53,16 @@ code {
   position: fixed;
   top: 10%;
   z-index: 1000; 
+  
+  p {
+    margin: 0 0 0.5em !important;
+    line-height: 1em;
+  }
 }
 
-.hw-description p {
-  margin: 0 0 0.5em !important;
-  line-height: 1em;
+/* hw2 */
+#hw2 {
+  img {
+    width: 100%;
+  }
 }
