@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button, Dimmer, Loader } from 'semantic-ui-react'
+import { Table, Button, Loader } from 'semantic-ui-react'
 import ProductRow from './ProductRow';
 import EditProductForm from './EditProductForm';
 import products from './../../data/products.json';
@@ -65,9 +65,7 @@ class ProductTable extends Component {
             <>
                 <Button onClick={this.startAddProduct}>Add product</Button>
                 {loading ?
-                    <Dimmer active>
-                        <Loader active inline='centered' />
-                    </Dimmer> :
+                    <Loader size='large' active /> :
                     <Table celled selectable collapsing>
                         <Table.Header>
                             <Table.Row>
