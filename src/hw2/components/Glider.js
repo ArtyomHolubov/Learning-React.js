@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import Glide from "@glidejs/glide";
 import "@glidejs/glide/dist/css/glide.core.min.css";
 import "@glidejs/glide/dist/css/glide.theme.min.css";
@@ -34,6 +35,10 @@ function Glider({ options, bullets, children }) {
             }
         </div>
     );
+}
+
+Glider.propTypes = {
+    children: PropTypes.array
 }
 
 export default Glider;

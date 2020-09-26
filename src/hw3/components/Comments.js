@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Feed, Button } from 'semantic-ui-react';
 
 class Comments extends Component {
@@ -61,5 +62,9 @@ class Comments extends Component {
     );
   }
 }
+
+Comments.propTypes = {
+  postId: PropTypes.any.isRequired
+};
 
 export default Comments;
