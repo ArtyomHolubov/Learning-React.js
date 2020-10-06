@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
@@ -12,19 +12,19 @@ const HomeWork3 = lazy(() => import('./hw3/components/HomeWork3'));
 const routes = {
   home: {
     name: 'home',
-    path: '/learning-react'
+    path: '/'
   },
   homeWork1: {
     name: 'Home Work 1',
-    path: '/learning-react/home-work/1'
+    path: '/home-work/1'
   },
   homeWork2: {
     name: 'Home Work 2',
-    path: '/learning-react/home-work/2'
+    path: '/home-work/2'
   },
   homeWork3: {
     name: 'Home Work 3',
-    path: '/learning-react/home-work/3'
+    path: '/home-work/3'
   }
 }
 
@@ -50,17 +50,17 @@ function App() {
       </Menu>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route exact path={routes.home.path}>
-            <Redirect to={routes.homeWork1.path} />
-          </Route>
-          <Route path={routes.homeWork1.path}>
+          <Route exact path={routes.homeWork1.path}>
             <HomeWork1 />
           </Route>
-          <Route path={routes.homeWork2.path}>
+          <Route exact path={routes.homeWork2.path}>
             <HomeWork2 />
           </Route>
-          <Route path={routes.homeWork3.path}>
+          <Route exact path={routes.homeWork3.path}>
             <HomeWork3 />
+          </Route>
+          <Route path={routes.home.path}>
+            <Redirect to={routes.homeWork1.path} />
           </Route>
         </Switch>
       </Suspense>
