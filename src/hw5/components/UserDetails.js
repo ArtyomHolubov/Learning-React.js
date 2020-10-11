@@ -1,34 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import { Card, Image, Loader, Dimmer } from "semantic-ui-react";
+import useData from './../hooks/useData';
 
 function UserDetails() {
     const { userId } = useParams();
-    const [userDetails, setUserDetails] = useState(null);
-    const [userAlbums, setUserAlbums] = useState([]);
-    const [isFetchingUserData, setIsFetchingUserData] = useState(false);
-    const [isFetchingUserAlbums, setIsFetchingUserAlbums] = useState(false);
-
-    useEffect(() => {
-        setIsFetchingUserData(true);
-        setIsFetchingUserAlbums(true);
-        fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-            .then(response => response.json())
-            .then(user => {
-                setUserDetails(user);
-                setIsFetchingUserData(false);
-            })
-        fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
-            .then(response => response.json())
-            .then(userAlbums => {
-                setUserAlbums(userAlbums);
-                setIsFetchingUserAlbums(false);
-            })
-            .catch(err => {
-                setIsFetchingUserData(false);
-                setIsFetchingUserAlbums(false);
-            })
-    }, [userId]);
+    const [userDetails, isFetchingUserData] = useData(`users/${userId}`, null);
+    const [userAlbums, isFetchingUserAlbums] = useData(`users/${userId}/albums`, []);
 
     if (userDetails === null) return <Loader size='small' active />;
 
@@ -62,8 +40,6 @@ function UserDetails() {
                     {userAlbums.map((a, i) => {
                         return (
                             <Card.Description key={a.id}>
-                                {/* <span>{i + 1}. </span>
-                                {a.title} */}
                                 <Link to={`/home-work/5/album/${a.id}`}>
                                     <span>{i + 1}. </span>
                                     {a.title}</Link>

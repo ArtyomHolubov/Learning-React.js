@@ -2,23 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { Container, List, Image, Grid, GridColumn, Loader } from "semantic-ui-react";
 import UserDetails from "./UserDetails";
+import useData from './../hooks/useData';
 
 function Users() {
-
-    const [users, setUsers] = useState([]);
-    const [isFetchingUsers, setIsFetchingUsers] = useState(false);
-
-    useEffect(() => {
-        setIsFetchingUsers(true);
-        fetch(`https://jsonplaceholder.typicode.com/users`)
-            .then(response => response.json())
-            .then(users =>  {
-                setUsers(users);
-                setIsFetchingUsers(false);
-            })
-    }, []);
-
     const { path } = useRouteMatch();
+    const [users, isFetchingUsers] = useData(`users`, []);
 
     return (
         <Container fluid>

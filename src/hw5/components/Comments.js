@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Feed, Loader } from 'semantic-ui-react';
+import useData from './../hooks/useData';
 
 function Comments() {
-  const [comments, setComments] = useState([]);
-  const [isCommentsFetching, setIsCommentsFetching] = useState(false);
   const { postId } = useParams();
-
-  useEffect(() => {
-    setIsCommentsFetching(true);
-    setComments([]);
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`)
-      .then(response => response.json())
-      .then(comments => {
-        setComments(comments);
-        setIsCommentsFetching(false);
-      })
-  }, [postId]);
+  const [comments, isCommentsFetching] = useData(`posts/${postId}/comments`, []);
 
   if (isCommentsFetching) {
     return (<Loader inline='centered' active={isCommentsFetching} />)

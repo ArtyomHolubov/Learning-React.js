@@ -2,24 +2,12 @@ import React, { useState, useEffect, createRef } from 'react';
 import { Feed, Loader, Container, Grid, Ref, Segment } from 'semantic-ui-react';
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import Comments from "./Comments";
+import useData from './../hooks/useData';
 
 function Posts() {
-
-  const [posts, setPosts] = useState([]);
-  const [isPostFetching, setIsPostFetching] = useState(false);
-  const contextRef = createRef();
-
   const { path } = useRouteMatch();
-
-  useEffect(() => {
-    setIsPostFetching(true);
-    fetch(`https://jsonplaceholder.typicode.com/posts`)
-      .then(response => response.json())
-      .then(posts => {
-        setPosts(posts);
-        setIsPostFetching(false);
-      })
-  }, []);
+  const contextRef = createRef();
+  const [posts, isFetching] = useData('posts', []);
 
   return (
     <Container fluid>
@@ -27,7 +15,7 @@ function Posts() {
         <Grid.Column>
           <Ref innerRef={contextRef}>
             <div>
-                <Loader size='small' active={isPostFetching} />
+                <Loader size='small' active={isFetching} />
                 <Feed>
                   {posts.map(post => (
                     <Feed.Event key={post.id}>

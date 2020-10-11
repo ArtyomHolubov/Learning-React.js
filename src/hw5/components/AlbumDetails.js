@@ -1,41 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import { Card, Image, Loader, Dimmer } from "semantic-ui-react";
+import useData from './../hooks/useData';
 
 function AlbumDetails() {
     const { albumId } = useParams();
-    const [albums, setAlbums] = useState(null);
-    const [photos, setPhotos] = useState([]);
-    const [isFetchingAlbums, setIsFetchingAlbums] = useState(false);
-    const [isFetchingAlbumsPhotos, setIsFetchingAlbumsPhotos] = useState(false);
-
-    useEffect(() => {
-        setIsFetchingAlbums(true);
-        setIsFetchingAlbumsPhotos(true);
-        fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}`)
-            .then(response => response.json())
-            .then(albums => {
-                setAlbums(albums);
-                setIsFetchingAlbums(false);
-            })
-        fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
-            .then(response => response.json())
-            .then(photos => {
-                setPhotos(photos);
-                setIsFetchingAlbumsPhotos(false);
-            })
-            .catch(err => {
-                setIsFetchingAlbums(false);
-                setIsFetchingAlbumsPhotos(false);
-            })
-    }, [albumId]);
-
+    const [albums, isFetchingAlbums] = useData(`albums/${albumId}`, null);
+    const [photos, isFetchingAlbumsPhotos] = useData(`albums/${albumId}/photos`, []);
     if (albums === null) return <Loader size='small' active />;
 
     if (!albums.id) {
         return <Redirect to='/' />
     }
-
 
     return (
         <>

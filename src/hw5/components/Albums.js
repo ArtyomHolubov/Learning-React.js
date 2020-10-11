@@ -1,24 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { Container, List, Grid, GridColumn, Loader, Icon } from "semantic-ui-react";
 import AlbumDetails from "./AlbumDetails";
+import useData from './../hooks/useData';
 
 function Albums() {
-
-    const [albums, setAlbums] = useState([]);
-    const [isFetchingAlbums, setIsFetchingAlbums] = useState(false);
-
-    useEffect(() => {
-        setIsFetchingAlbums(true);
-        fetch(`https://jsonplaceholder.typicode.com/albums`)
-            .then(response => response.json())
-            .then(albums => {
-                setAlbums(albums);
-                setIsFetchingAlbums(false);
-            })
-    }, []);
-
     const { path } = useRouteMatch();
+    const [albums, isFetchingAlbums] = useData(`albums`, []);
 
     return (
         <Container fluid>
