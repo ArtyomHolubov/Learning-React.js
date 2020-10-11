@@ -31,7 +31,7 @@ class Posts extends Component {
               <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
               <Feed.Content>
                 <Feed.Summary onClick={() => { onPostSelect(post)}}>
-                  <a>{post.title}</a>
+                  {post.title}
                 </Feed.Summary>
                 <Feed.Extra text>
                   {post.body}

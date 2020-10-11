@@ -1,30 +1,19 @@
-import React, { useState, createRef } from 'react';
+import React from 'react';
 import {
-  HashRouter as Router,
-  HashRouter as Hash,
   Switch,
   Route,
-  useRouteMatch,
-  Link, NavLink, useHistory, Redirect
+  useRouteMatch, NavLink, Redirect
 } from "react-router-dom";
-import { Grid, Sticky, Rail, Segment, Ref } from 'semantic-ui-react';
 
 import Posts from "./Posts";
-import AuthorInfo from './AuthorInfo';
 import Users from './Users';
-import Comments from './Comments';
+import Albums from './Albums';
+import UserDetails from './UserDetails';
+import AlbumDetails from './AlbumDetails';
+import AlbumPhotos from './AlbumPhotos';
 
 function Blog() {
   let { path, url } = useRouteMatch();
-  const [selectedAuthorInfo, setSelectedAuthorInfo] = useState(null);
-  const contextRef = createRef();
-  const history = useHistory();
-
-  const handlePostSelection = (post) => {
-    setSelectedAuthorInfo(post.userId);
-    console.log(`${path}/posts/${post.userId}`);
-    history.push(`${path}/posts/${post.userId}`);
-  }
 
   return (
     <div>
@@ -34,7 +23,7 @@ function Blog() {
             <NavLink exact activeClassName='active' to={`${url}/posts`}>Posts</NavLink>
           </li>
           <li>
-            <NavLink exact activeClassName='active' to={`${url}/about`}>About</NavLink>
+            <NavLink activeClassName='active' to={`${url}/albums`}>Albums</NavLink>
           </li>
           <li>
             <NavLink activeClassName='active' to={`${url}/users`}>Users</NavLink>
@@ -45,15 +34,21 @@ function Blog() {
         <Route path={`${path}/posts`}>
           <Posts />
         </Route>
-        <Route path={`${path}/about`} exact>
-          Hello About
-          </Route>
+        <Route path={`${path}/albums`}>
+          <Albums />
+        </Route>
         <Route path={`${path}/users`}>
           <Users></Users>
         </Route>
-        <Route path={`${path}/people/:userId`} exact>
-          UserDetails
-          </Route>
+        <Route path={`${path}/user/:userId`} exact>
+          <UserDetails />
+        </Route>
+        <Route path={`${path}/album/:albumId`} exact>
+          <AlbumDetails />
+        </Route>
+        <Route path={`${path}/album-photos/:albumId`} exact>
+          <AlbumPhotos />
+        </Route>
         <Route path={`${path}`} exact>
           <Redirect to={`${path}/posts`} />
         </Route>

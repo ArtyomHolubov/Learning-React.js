@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
-import { Container, List, Image, Grid, GridColumn, Loader } from "semantic-ui-react";
-import UserDetails from "./UserDetails";
+import { Container, List, Grid, GridColumn, Loader, Icon } from "semantic-ui-react";
+import AlbumDetails from "./AlbumDetails";
 
-function Users() {
+function Albums() {
 
-    const [users, setUsers] = useState([]);
-    const [isFetchingUsers, setIsFetchingUsers] = useState(false);
+    const [albums, setAlbums] = useState([]);
+    const [isFetchingAlbums, setIsFetchingAlbums] = useState(false);
 
     useEffect(() => {
-        setIsFetchingUsers(true);
-        fetch(`https://jsonplaceholder.typicode.com/users`)
+        setIsFetchingAlbums(true);
+        fetch(`https://jsonplaceholder.typicode.com/albums`)
             .then(response => response.json())
-            .then(users =>  {
-                setUsers(users);
-                setIsFetchingUsers(false);
+            .then(albums => {
+                setAlbums(albums);
+                setIsFetchingAlbums(false);
             })
     }, []);
 
@@ -24,19 +24,19 @@ function Users() {
         <Container>
             <Grid columns={2}>
                 <GridColumn>
-                    {isFetchingUsers ?
-                        <Loader active={isFetchingUsers} />
+                    {isFetchingAlbums ?
+                        <Loader active={isFetchingAlbums} />
                         :
                         <List>
-                            {users.map(user => (
-                                <List.Item key={user.id}>
-                                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/rachel.png' />
+                            {albums.map(album => (
+                                <List.Item key={album.id}>
+                                    <Icon name='file' />
                                     <List.Content>
                                         <List.Header>
-                                            <Link to={`${path}/${user.id}`}>{user.name}</Link>
+                                            <Link to={`${path}/${album.id}`}>album - {album.id}/{album.title}</Link>
                                         </List.Header>
                                         <List.Description>
-                                            {user.email}, {user.phone}
+                                            <Link to={`/home-work/5/user/${album.userId}`}>user - {album.userId}</Link>
                                         </List.Description>
                                     </List.Content>
                                 </List.Item>
@@ -46,8 +46,8 @@ function Users() {
                 </GridColumn>
                 <GridColumn>
                     <Switch>
-                        <Route path={`${path}/:userId`} exact>
-                            <UserDetails />
+                        <Route path={`${path}/:albumId`} exact>
+                            <AlbumDetails />
                         </Route>
                     </Switch>
                 </GridColumn>
@@ -56,4 +56,4 @@ function Users() {
     );
 }
 
-export default Users;
+export default Albums;

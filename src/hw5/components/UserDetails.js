@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 import { Card, Image, Loader, Dimmer } from "semantic-ui-react";
 
 function UserDetails() {
@@ -62,8 +62,11 @@ function UserDetails() {
                     {userAlbums.map((a, i) => {
                         return (
                             <Card.Description key={a.id}>
-                                <span>{i + 1}. </span>
-                                {a.title}
+                                {/* <span>{i + 1}. </span>
+                                {a.title} */}
+                                <Link to={`/home-work/5/album/${a.id}`}>
+                                    <span>{i + 1}. </span>
+                                    {a.title}</Link>
                             </Card.Description>
                         )
                     })}

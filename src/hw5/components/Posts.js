@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { Feed, Loader, Container, Grid, Ref, Segment, Rail, Sticky } from 'semantic-ui-react';
+import { Feed, Loader, Container, Grid, Ref, Segment } from 'semantic-ui-react';
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import Comments from "./Comments";
 
@@ -9,7 +9,7 @@ function Posts() {
   const [isPostFetching, setIsPostFetching] = useState(false);
   const contextRef = createRef();
 
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
 
   useEffect(() => {
     setIsPostFetching(true);
@@ -31,7 +31,7 @@ function Posts() {
                 <Feed>
                   {posts.map(post => (
                     <Feed.Event key={post.id}>
-                      <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' />
+                      <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/elliot.jpg' as={Link} to={`/home-work/5/user/${post.userId}`} />
                       <Feed.Content>
                         <Feed.Summary>
                           <Link to={`${path}/${post.id}`}>{post.title}</Link>
@@ -39,7 +39,6 @@ function Posts() {
                         <Feed.Extra text>
                           {post.body}
                         </Feed.Extra>
-                        {/* <Comments postId={post.id}/> */}
                       </Feed.Content>
                     </Feed.Event>
                   ))}
