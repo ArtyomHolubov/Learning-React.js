@@ -1,75 +1,79 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "350cd4739dc9c13b3f8a1cf96bd08c55",
+    "revision": "10893393d1b3712c442731582b4d15b0",
     "url": "/learning-react/index.html"
   },
   {
-    "revision": "3a5dfece3e94e3c14214",
-    "url": "/learning-react/static/css/4.32ec5cf0.chunk.css"
+    "revision": "44334a976500f6aa6d26",
+    "url": "/learning-react/static/css/1.01f5b618.chunk.css"
   },
   {
-    "revision": "b5896edef57b87e34b00",
-    "url": "/learning-react/static/css/5.01f5b618.chunk.css"
+    "revision": "710ba8e919dfc5346100",
+    "url": "/learning-react/static/css/5.32ec5cf0.chunk.css"
   },
   {
-    "revision": "7f764f7ad1b38e6c35e4",
-    "url": "/learning-react/static/css/main.3723f781.chunk.css"
+    "revision": "3d1ef305930a7b0f567d",
+    "url": "/learning-react/static/css/main.f966af3c.chunk.css"
   },
   {
-    "revision": "08a2fec9a3e66f01bf3e",
-    "url": "/learning-react/static/js/0.6a4b4ed9.chunk.js"
+    "revision": "5181ba2d524b7d4955f7",
+    "url": "/learning-react/static/js/0.54d396c7.chunk.js"
   },
   {
     "revision": "97636669c8193ace9a3b4f1548fc4d0b",
-    "url": "/learning-react/static/js/0.6a4b4ed9.chunk.js.LICENSE.txt"
+    "url": "/learning-react/static/js/0.54d396c7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "590edf236433ba9fbc04",
-    "url": "/learning-react/static/js/1.7253ec2d.chunk.js"
-  },
-  {
-    "revision": "01bb6e2bd6ef52287a7a",
-    "url": "/learning-react/static/js/10.327b5042.chunk.js"
-  },
-  {
-    "revision": "3a5dfece3e94e3c14214",
-    "url": "/learning-react/static/js/4.38e79a47.chunk.js"
-  },
-  {
-    "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/learning-react/static/js/4.38e79a47.chunk.js.LICENSE.txt"
-  },
-  {
-    "revision": "b5896edef57b87e34b00",
-    "url": "/learning-react/static/js/5.b5dff623.chunk.js"
+    "revision": "44334a976500f6aa6d26",
+    "url": "/learning-react/static/js/1.673ac432.chunk.js"
   },
   {
     "revision": "efcca69e6881d499f081e5e8742c5eb8",
-    "url": "/learning-react/static/js/5.b5dff623.chunk.js.LICENSE.txt"
+    "url": "/learning-react/static/js/1.673ac432.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "36badf5f539791b9f776",
-    "url": "/learning-react/static/js/6.413ac45d.chunk.js"
+    "revision": "0e6818688a3185d6153b",
+    "url": "/learning-react/static/js/10.7246b93b.chunk.js"
   },
   {
-    "revision": "2af425eae67d8378327d",
-    "url": "/learning-react/static/js/7.0f86ac60.chunk.js"
+    "revision": "a56e354a6544be425147",
+    "url": "/learning-react/static/js/11.93fd60ac.chunk.js"
   },
   {
-    "revision": "720f81432c77ca9066a3",
-    "url": "/learning-react/static/js/8.f5e787d8.chunk.js"
+    "revision": "021f13bbd0ddb71fd3dc",
+    "url": "/learning-react/static/js/2.1b49913b.chunk.js"
   },
   {
-    "revision": "b681e0fe6616c7928774",
-    "url": "/learning-react/static/js/9.322f7b63.chunk.js"
+    "revision": "710ba8e919dfc5346100",
+    "url": "/learning-react/static/js/5.85b17398.chunk.js"
   },
   {
-    "revision": "7f764f7ad1b38e6c35e4",
-    "url": "/learning-react/static/js/main.cd92837d.chunk.js"
+    "revision": "c64c486544348f10a6d6c716950bc223",
+    "url": "/learning-react/static/js/5.85b17398.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "aa46bcf51bafbda1cf10",
-    "url": "/learning-react/static/js/runtime-main.f8e90f56.js"
+    "revision": "5437bd3946bd593f8135",
+    "url": "/learning-react/static/js/6.a6907d91.chunk.js"
+  },
+  {
+    "revision": "1f0f2f83adaddf270169",
+    "url": "/learning-react/static/js/7.4d08203f.chunk.js"
+  },
+  {
+    "revision": "ddf06948804eb16d111b",
+    "url": "/learning-react/static/js/8.36556c00.chunk.js"
+  },
+  {
+    "revision": "62182491a16ff6611725",
+    "url": "/learning-react/static/js/9.b908a2e6.chunk.js"
+  },
+  {
+    "revision": "3d1ef305930a7b0f567d",
+    "url": "/learning-react/static/js/main.b775343b.chunk.js"
+  },
+  {
+    "revision": "47c64c3a95b36ee2c46f",
+    "url": "/learning-react/static/js/runtime-main.8a01fb85.js"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
