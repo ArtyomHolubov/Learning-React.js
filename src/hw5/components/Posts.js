@@ -22,11 +22,11 @@ function Posts() {
   }, []);
 
   return (
-    <Container>
+    <Container fluid>
       <Grid columns={2}>
         <Grid.Column>
           <Ref innerRef={contextRef}>
-            <Segment>
+            <div>
                 <Loader size='small' active={isPostFetching} />
                 <Feed>
                   {posts.map(post => (
@@ -43,7 +43,7 @@ function Posts() {
                     </Feed.Event>
                   ))}
                 </Feed>
-            </Segment>
+            </div>
           </Ref>
         </Grid.Column>
         <Grid.Column>

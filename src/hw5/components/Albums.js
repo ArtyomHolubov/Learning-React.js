@@ -21,7 +21,7 @@ function Albums() {
     const { path } = useRouteMatch();
 
     return (
-        <Container>
+        <Container fluid>
             <Grid columns={2}>
                 <GridColumn>
                     {isFetchingAlbums ?

@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
+import { Menu } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 // import HomeWork1 from './hw1/components/HomeWork1';
 // import HomeWork2 from './hw2/components/HomeWork2';
