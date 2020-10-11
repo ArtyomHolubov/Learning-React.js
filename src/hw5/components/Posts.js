@@ -1,5 +1,5 @@
-import React, { useState, useEffect, createRef } from 'react';
-import { Feed, Loader, Container, Grid, Ref, Segment } from 'semantic-ui-react';
+import React, { createRef } from 'react';
+import { Feed, Loader, Container, Grid, Ref } from 'semantic-ui-react';
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 import Comments from "./Comments";
 import useData from './../hooks/useData';

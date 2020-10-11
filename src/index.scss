@@ -66,3 +66,26 @@ code {
     width: 100%;
   }
 }
+
+#hw5 {
+  .fade-enter,
+  .fade-exit {
+    transition: opacity 250ms ease-out;
+  }
+  
+  .fade-enter {
+    opacity: 0.01;
+  }
+  
+  .fade-enter.fade-enter-active {
+      opacity: 1;
+  }
+  
+  .fade-exit {
+      opacity: 1;
+  }
+  
+  .fade-exit-active {
+      opacity: 0.01;
+  }
+}

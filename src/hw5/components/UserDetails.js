@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Redirect, Link } from 'react-router-dom';
 import { Card, Image, Loader, Dimmer } from "semantic-ui-react";
 import useData from './../hooks/useData';

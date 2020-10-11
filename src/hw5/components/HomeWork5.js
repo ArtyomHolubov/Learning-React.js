@@ -5,7 +5,7 @@ import Descriptions from '../../data/hw.json';
 
 function HomeWork5() {
   return (
-    <div id="hw3">
+    <div id="hw5">
       <h1>Home Work 2</h1>
       <div>
         <HomeWorkDescription data={Descriptions.hw5.description}></HomeWorkDescription>

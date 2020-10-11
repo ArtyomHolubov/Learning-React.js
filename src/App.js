@@ -1,15 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect, NavLink } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './App.css';
-// import HomeWork1 from './hw1/components/HomeWork1';
-// import HomeWork2 from './hw2/components/HomeWork2';
+import HomeWork1 from './hw1/components/HomeWork1';
+import HomeWork2 from './hw2/components/HomeWork2';
+import HomeWork3 from './hw3/components/HomeWork3';
+import HomeWork5 from './hw5/components/HomeWork5';
 
-const HomeWork1 = lazy(() => import('./hw1/components/HomeWork1'));
-const HomeWork2 = lazy(() => import('./hw2/components/HomeWork2'));
-const HomeWork3 = lazy(() => import('./hw3/components/HomeWork3'));
-const HomeWork5 = lazy(() => import('./hw5/components/HomeWork5'));
 const routes = {
   home: {
     name: 'home',
@@ -58,7 +55,6 @@ function App() {
           as={NavLink} activeClassName="active"
         />
       </Menu>
-      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path={routes.homeWork1.path}>
             <HomeWork1 />
@@ -76,7 +72,6 @@ function App() {
             <Redirect to={routes.homeWork1.path} />
           </Route>
         </Switch>
-      </Suspense>
     </Router>
   );
 }

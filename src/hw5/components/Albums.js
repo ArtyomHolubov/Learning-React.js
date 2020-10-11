@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
 import { Container, List, Grid, GridColumn, Loader, Icon } from "semantic-ui-react";
 import AlbumDetails from "./AlbumDetails";
