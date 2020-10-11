@@ -9,6 +9,7 @@ import './App.css';
 const HomeWork1 = lazy(() => import('./hw1/components/HomeWork1'));
 const HomeWork2 = lazy(() => import('./hw2/components/HomeWork2'));
 const HomeWork3 = lazy(() => import('./hw3/components/HomeWork3'));
+const HomeWork5 = lazy(() => import('./hw5/components/HomeWork5'));
 const routes = {
   home: {
     name: 'home',
@@ -25,6 +26,10 @@ const routes = {
   homeWork3: {
     name: 'Home Work 3',
     path: '/home-work/3'
+  },
+  homeWork5: {
+    name: 'Home Work 5',
+    path: '/home-work/5'
   }
 }
 
@@ -47,6 +52,11 @@ function App() {
           to={routes.homeWork3.path}
           as={NavLink} activeClassName="active"
         />
+        <Menu.Item
+          name={routes.homeWork5.name}
+          to={routes.homeWork5.path}
+          as={NavLink} activeClassName="active"
+        />
       </Menu>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
@@ -58,6 +68,9 @@ function App() {
           </Route>
           <Route exact path={routes.homeWork3.path}>
             <HomeWork3 />
+          </Route>
+          <Route path={routes.homeWork5.path}>
+            <HomeWork5 />
           </Route>
           <Route path={routes.home.path}>
             <Redirect to={routes.homeWork1.path} />
