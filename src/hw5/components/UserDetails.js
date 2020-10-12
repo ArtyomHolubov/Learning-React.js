@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Redirect, Link } from 'react-router-dom';
+import { useParams, Redirect, Link, useRouteMatch } from 'react-router-dom';
 import { Card, Image, Loader, Dimmer } from "semantic-ui-react";
 import useData from './../hooks/useData';
 
@@ -11,7 +11,7 @@ function UserDetails() {
     if (userDetails === null) return <Loader size='small' active />;
 
     if (!userDetails.id) {
-        return <Redirect to='/' />
+        return <Redirect to="/home-work/5/users/1" />
     }
 
     return (
