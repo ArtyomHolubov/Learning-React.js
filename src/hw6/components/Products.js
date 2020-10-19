@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
-import { Container, List, Image, Grid, GridColumn, Loader } from "semantic-ui-react";
-import { data }  from '../../data/products.json';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { Container, List } from "semantic-ui-react";
+import Product from "./Product";
+
+const checkAddedProducts = (products, cartList) => {
+    const resultArray = [];
+
+    products.map(p => {
+        var clonedProduct = Object.assign({}, p);
+        cartList.map((cp) => {
+            if (clonedProduct.id == cp.id) {
+                clonedProduct.isAdded = true;
+            }
+        });
+
+        resultArray.push(clonedProduct);
+    });
+
+    return resultArray;
+}
 
 function Products() {
-    const { path } = useRouteMatch();
-    const [products, setProducts] = useState(data);
+    const { cartList } = useSelector(state => state.shop);
+    const { products } = useSelector(state => state.shop);
+
+    var listOfProducts = useMemo(() => {
+        return checkAddedProducts(products, cartList)
+    }, [products, cartList]);
 
     return (
         <Container fluid>
             <List>
-                {products.map(product => (
-                    <List.Item key={product.id}>
-                        <Image avatar src={product.images.preview} />
-                        <List.Content>
-                            <List.Header>
-                                {product.title}
-                            </List.Header>
-                            <List.Description>
-                            {product.price}$, {product.price_pcs}₴
-                            </List.Description>
-                        </List.Content>
-                    </List.Item>
+                {listOfProducts.map(product => (
+                    <Product key={product.id} product={product} />
                 ))}
             </List>
         </Container>

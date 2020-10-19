@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
-import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
-import { Container, List, Image, Grid, GridColumn, Loader } from "semantic-ui-react";
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { Container, List } from "semantic-ui-react";
+import CartProduct from "./CartProduct";
 
-function Cart() {
-    const { path } = useRouteMatch();
-    //const [products, setProducts] = useState(productList);
+const filterProducts = (products, cartList) => {
+    return products.filter(p => {
+        return cartList.find(cp => cp.id === p.id);
+    });
+}
+
+function Products() {
+    const { cartList } = useSelector(state => state.shop);
+    const { products } = useSelector(state => state.shop);
+
+    var listOfProducts = useMemo(() => {
+        return filterProducts(products, cartList)
+    }, [products, cartList]);
 
     return (
         <Container fluid>
-            Cart
+            <List>
+                {listOfProducts.map(product => (
+                    <CartProduct key={product.id} product={product} />
+                ))}
+            </List>
         </Container>
     );
 }
 
-export default Cart;
+export default Products;

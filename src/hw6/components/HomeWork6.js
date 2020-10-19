@@ -1,7 +1,11 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import createStore from '../redux/createStore'
 import Shop from "./Shop";
 import HomeWorkDescription from '../../hw1/components/HomeWorkDescription';
 import Descriptions from '../../data/hw.json';
+
+const store = createStore();
 
 function HomeWork6() {
   return (
@@ -11,7 +15,9 @@ function HomeWork6() {
         <HomeWorkDescription data={Descriptions.hw6.description}></HomeWorkDescription>
       </div>
       <br></br>
-      <Shop/>
+      <Provider store={store}>
+        <Shop />
+      </Provider>
     </div>
   );
 }
