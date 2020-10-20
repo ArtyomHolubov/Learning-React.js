@@ -4,9 +4,25 @@ import { Container, List } from "semantic-ui-react";
 import CartProduct from "./CartProduct";
 
 const filterProducts = (products, cartList) => {
-    return products.filter(p => {
-        return cartList.find(cp => cp.id === p.id);
+    var resultArray = [];
+    cartList.map(cp => {
+        var product = products.find(p => cp.id === p.id);
+        var existProduct = resultArray.find(p => product.id === p.id);
+        if (existProduct) {
+            existProduct.count++;
+        } else {
+            resultArray.push({
+                id: product.id,
+                preview: product.images.preview,
+                title: product.title,
+                price: parseInt(product.price),
+                price_pcs: parseInt(product.price_pcs),
+                count: 1
+            });
+        }
     });
+
+    return resultArray;
 }
 
 function Products() {

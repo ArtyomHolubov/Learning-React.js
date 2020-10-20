@@ -7,9 +7,18 @@ export default (state = [], action) => {
         case ADD_TO_CART: return [...state, {
             id: action.payload.id
         }];
-        case REMOVE_FROM_CART: return state.filter((item) => {
-            return item.id !== action.payload.id
-        });
+        case REMOVE_FROM_CART: {
+            var index = -1;
+            state.map((item, i) => {
+                if(action.payload.id === item.id) {
+                    index = i;
+                }
+            });
+            if (index > -1) {
+                state.splice(index, 1);
+                return [...state];
+            }
+        };
 
         default: return state;
     }

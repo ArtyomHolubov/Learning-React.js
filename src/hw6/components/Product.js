@@ -18,7 +18,7 @@ function Product({ product }) {
                     {product.title}
                 </List.Header>
                 <List.Description>
-                    {product.price}$, {product.price_pcs}₴
+                    {product.price_pcs}$, {product.price}₴
                 </List.Description>
             </List.Content>
         </List.Item >

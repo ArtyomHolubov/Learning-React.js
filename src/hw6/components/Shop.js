@@ -1,18 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Switch,
   Route,
   useRouteMatch,
-  NavLink, 
+  NavLink,
   Redirect
 } from "react-router-dom";
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu, Segment, Label } from 'semantic-ui-react';
 
 import Products from "./Products";
 import Cart from "./Cart";
 
 function Shop() {
   let { path, url } = useRouteMatch();
+  const { cartList } = useSelector(state => state.shop);
 
   return (
     <>
@@ -25,8 +27,12 @@ function Shop() {
         <Menu.Item
           name="Cart"
           to={`${url}/сart`}
-          as={NavLink} activeClassName="active"
-        />
+          as={NavLink} activeClassName="active">
+            Cart
+          {cartList.length > 0 && <Label color='red' circular>
+            {cartList.length}
+          </Label>}
+        </Menu.Item>
       </Menu>
 
       <Segment attached='bottom'>

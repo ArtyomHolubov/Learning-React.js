@@ -12,14 +12,14 @@ function CartProduct({ product }) {
 
     return (
         <List.Item>
-            <Button onClick={() => remove(product.id)} >-</Button>
-            <Image avatar src={product.images.preview} />
+            <Button onClick={() => remove(product.id)} color="red" >-</Button>
+            <Image avatar src={product.preview} />
             <List.Content>
                 <List.Header>
                     {product.title}
                 </List.Header>
                 <List.Description>
-                    {product.price}$, {product.price_pcs}₴
+                    {product.price_pcs * product.count}$,  {product.price * product.count}₴,  count: {product.count}
                             </List.Description>
             </List.Content>
         </List.Item>
