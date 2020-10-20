@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Container, List } from "semantic-ui-react";
 import CartProduct from "./CartProduct";
+import TotalPrice from "./TotalPrice";
 
 const filterProducts = (products, cartList) => {
     var resultArray = [];
@@ -39,6 +40,7 @@ function Products() {
                 {listOfProducts.map(product => (
                     <CartProduct key={product.id} product={product} />
                 ))}
+                <TotalPrice products={listOfProducts}/>
             </List>
         </Container>
     );
