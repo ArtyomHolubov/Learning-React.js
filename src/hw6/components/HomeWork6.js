@@ -10,7 +10,7 @@ const store = createStore();
 function HomeWork6() {
   return (
     <div id="hw5">
-      <h1>Home Work 2</h1>
+      <h1>Home Work 4</h1>
       <div>
         <HomeWorkDescription data={Descriptions.hw6.description}></HomeWorkDescription>
       </div>

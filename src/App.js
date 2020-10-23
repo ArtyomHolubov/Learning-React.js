@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import HomeWork1 from './hw1/components/HomeWork1';
 import HomeWork2 from './hw2/components/HomeWork2';
 import HomeWork3 from './hw3/components/HomeWork3';
+import HomeWork4 from './hw4/components/HomeWork4';
 import HomeWork5 from './hw5/components/HomeWork5';
 import HomeWork6 from './hw6/components/HomeWork6';
 
@@ -24,6 +25,10 @@ const routes = {
   homeWork3: {
     name: 'Home Work 3',
     path: '/home-work/3'
+  },
+  homeWork4: {
+    name: 'Home Work 4',
+    path: '/home-work/4'
   },
   homeWork5: {
     name: 'Home Work 5',
@@ -55,6 +60,11 @@ function App() {
           as={NavLink} activeClassName="active"
         />
         <Menu.Item
+          name={routes.homeWork4.name}
+          to={routes.homeWork4.path}
+          as={NavLink} activeClassName="active"
+        />
+        <Menu.Item
           name={routes.homeWork5.name}
           to={routes.homeWork5.path}
           as={NavLink} activeClassName="active"
@@ -77,6 +87,9 @@ function App() {
         </Route>
         <Route path={routes.homeWork5.path}>
           <HomeWork5 />
+        </Route>
+        <Route path={routes.homeWork4.path}>
+          <HomeWork4 />
         </Route>
         <Route path={routes.homeWork6.path}>
           <HomeWork6 />
